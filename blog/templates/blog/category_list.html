@@ -1,0 +1,29 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div class="container my-5">
+    <h2 class="mb-4 text-center">Categories</h2>
+
+    <div class="row">
+        {% for cat in categories %}
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                <div class="card h-100 shadow-sm text-center">
+                    <div class="card-body d-flex flex-column justify-content-center">
+                        <h5 class="card-title">
+                            🏷️ {{ cat.name }}
+                        </h5>
+                        <!-- <a href="{% url 'category_posts' cat.slug %}"
+                           class="btn btn-outline-primary mt-3">
+                            View Posts
+                        </a> -->
+                        <a href="{% url 'category_posts' cat.slug %}" class="stretched-link"></a>
+
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p class="text-muted">No categories available.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

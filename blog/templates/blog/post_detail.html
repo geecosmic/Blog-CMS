@@ -1,0 +1,35 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<article class="mb-5">
+  <h1>{{ post.title }}</h1>
+  <p class="text-muted">
+    By {{ post.author }} • {{ post.created_at|date:"M d, Y" }}
+  </p>
+  <hr>
+  {{ post.content|safe }}
+</article>
+
+<section>
+  <h4>Comments ({{ comments.count }})</h4>
+
+  {% for comment in comments %}
+    <div class="border p-2 mb-2">
+      <strong>{{ comment.name }}</strong>
+      <p>{{ comment.content }}</p>
+    </div>
+  {% empty %}
+    <p>No comments yet.</p>
+  {% endfor %}
+</section>
+
+<section class="mt-4">
+  <h4>Leave a Comment</h4>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-primary">Submit</button>
+  </form>
+</section>
+        <a class="nav-link text-center" href="{% url 'post_list' %}">back</a>
+{% endblock %}

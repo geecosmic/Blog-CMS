@@ -1,0 +1,40 @@
+{% extends 'blog/base.html' %}
+{% load group_filters %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h2 class="card-title text-center mb-3">📝 Apply to Become an Author</h2>
+                    <p class="text-center text-muted mb-4">
+                        Fill out the form below. Admin will review your application and contact you.
+                    </p>
+
+                    <!-- Django messages -->
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+
+                    <!-- Application form -->
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <div class="d-grid mt-3">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                Submit Application
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
