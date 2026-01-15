@@ -1,132 +1,199 @@
 # Django Blog & Content Management System (CMS)
 
-This is a full-featured **Django Blog & Content Management System (CMS)** built for multi-user collaboration. It supports **Admin, Editor, and Author roles**, has **rich text editing**, **categories**, a **subscriber system**, and **dynamic dashboards**. The project is designed to be production-ready, secure, and responsive.
+A full-featured **Django Blog & CMS** built for multi-user
+collaboration.\
+Supports **Admin, Editor, and Author roles**, with **rich text
+editing**, **categories**, a **subscriber system**, and **dynamic
+dashboards**.\
+Designed to be production-ready, secure, and responsive.
 
----
+------------------------------------------------------------------------
 
 ## Table of Contents
 
-- [Project Overview](#project-overview)  
-- [User Roles & Permissions](#user-roles--permissions)  
-- [Features](#features)  
-- [How It Works](#how-it-works)  
-- [Installation](#installation)  
-- [Usage](#usage)  
-- [Email Configuration](#email-configuration)  
-- [Technologies Used](#technologies-used)  
-- [License](#license)  
+-   Project Overview\
+-   User Roles & Permissions\
+-   Features\
+-   How It Works\
+-   Installation\
+-   Usage\
+-   Email Configuration\
+-   Technologies Used\
+-   License
 
----
+------------------------------------------------------------------------
 
 ## Project Overview
 
-This CMS allows multiple users to collaborate on creating and publishing blog content:
+This CMS allows multiple users to collaborate on blog content:
 
-- **Admin** users manage all users, approve author applications, and moderate content.  
-- **Editors** can create, edit, and publish posts, and moderate comments.  
-- **Authors** can create and edit their own posts but cannot publish without approval.  
-- **Visitors** can apply to become Authors via a subscription form.
+-   **Admin**: manage users, approve authors, moderate content.\
+-   **Editor**: create, edit, publish posts, moderate comments.\
+-   **Author**: create and edit own posts; needs approval to publish.\
+-   **Visitor**: view posts and apply to become an Author.
 
-Posts can be categorized, commented on, and displayed on the homepage in a card-based UI.  
+Posts support categories, comments, and appear on the homepage in a
+card-based layout.
 
----
+------------------------------------------------------------------------
 
 ## User Roles & Permissions
 
-| Role        | Permissions                                                                 |
-|------------|-----------------------------------------------------------------------------|
-| **Admin**   | Full access: manage users, assign roles, see all posts, approve/reject author applications, moderate comments |
-| **Editor**  | Can view & edit all posts, publish posts, moderate comments                 |
-| **Author**  | Can create/edit only their own posts; cannot publish without Editor/Admin approval |
-| **Visitor** | Can view published posts, apply to become an Author via a form             |
+  -----------------------------------------------------------------------
+  Role                           Permissions
+  ------------------------------ ----------------------------------------
+  **Admin**                      Full access: manage users, assign roles,
+                                 approve/reject authors, moderate
+                                 comments
 
----
+  **Editor**                     View & edit all posts, publish posts,
+                                 moderate comments
+
+  **Author**                     Create/edit own posts only; cannot
+                                 publish without approval
+
+  **Visitor**                    View posts, apply to become an Author
+  -----------------------------------------------------------------------
+
+------------------------------------------------------------------------
 
 ## Features
 
-- **Rich text editing** with CKEditor for posts.  
-- **Post status workflow:** Draft or Published.  
-- **Post categories** for organizing content.  
-- **Comment system** with moderation by Editors/Admins.  
-- **Dashboard** tailored to user role (Admin, Editor, Author).  
-- **Subscriber form** for visitors to apply as Authors.  
-- **Role-based access control** to restrict actions.  
-- **Responsive UI** using Bootstrap cards for posts and categories.  
-- **Email notifications** for password setup and author applications.  
+-   Rich text editing with **CKEditor**\
+-   Post status: Draft / Published\
+-   Post categories\
+-   Comment system with moderation\
+-   Role-based dashboards\
+-   Author application system\
+-   Role-based access control\
+-   Responsive UI with Bootstrap\
+-   Email notifications for setup and approvals
 
----
+------------------------------------------------------------------------
 
 ## How It Works
 
-### 1. Post Workflow
+### Post Workflow
 
-1. **Authors** create a post in draft status.  
-2. **Editors** and **Admins** can review and publish it.  
-3. Published posts appear on the homepage and category pages.  
+1.  Authors create posts as drafts.\
+2.  Editors/Admins review and publish.\
+3.  Published posts appear on homepage and categories.
 
-### 2. Categories
+### Categories
 
-- Posts are assigned to a category.  
-- Users can browse posts by clicking a category.  
-- Category pages display posts in a responsive card grid.  
+-   Each post belongs to a category.\
+-   Users browse posts by category.\
+-   Displayed in responsive card layout.
 
-### 3. Dashboard
+### Dashboard
 
-- **Authors** see only their posts.  
-- **Editors** see all posts and can publish or edit any post.  
-- **Admins** see all posts, manage users, approve author applications, and moderate comments.  
-- Dashboard links are dynamic based on role, e.g., "📝 All Posts" for Editors/Admins, "📝 My Posts" for Authors.  
+-   Authors: see only their posts.\
+-   Editors: see and manage all posts.\
+-   Admins: manage posts, users, comments, and applications.\
+-   Menu adapts based on role.
 
-### 4. Author Applications
+### Author Applications
 
-- Visitors can submit an application via the `/subscribe/` page.  
-- Admin receives the application and can approve/reject.  
-- Approved users are assigned the **Author** group.  
+-   Visitors apply via `/subscribe/`.\
+-   Admin reviews and approves/rejects.\
+-   Approved users become Authors.
 
-### 5. Authentication & Email
+### Authentication & Email
 
-- Admin registers new users via `/admin-register/`.  
-- Upon registration, users receive a **password setup email**.  
-- Users log in at `/login/` and are redirected to the site dashboard (not Django admin).  
-- Password resets are handled via email.  
+-   Admin creates users via `/admin-register/`.\
+-   Users receive password setup email.\
+-   Login at `/login/` (custom dashboard, not Django admin).\
+-   Password reset via email.
 
----
+------------------------------------------------------------------------
 
 ## Installation
 
-1. Clone the repository:
+### 1. Clone Repository
 
-```bash
-git clone https://github.com/geecosmic/blog_cms.git
+``` bash
+git clone https://github.com/geecosmic/Blog-CMS.git
 cd blog_cms
+```
 
+### 2. Create Virtual Environment
 
-Usage
+``` bash
+python -m venv venv
+# Windows
+venv\Scripts\activate
+# macOS/Linux
+source venv/bin/activate
+```
 
-Visit / to see the blog homepage.
+### 3. Install Dependencies
 
-Visit /dashboard/ after login to manage posts.
+``` bash
+pip install -r requirements.txt
+```
 
-Admins can register new users via /admin-register/.
+### 4. Run Migrations
 
-Visitors can apply to become Authors via /subscribe/.
+``` bash
+python manage.py makemigrations
+python manage.py migrate
+```
 
-Categories are browsable via the navigation bar.
+### 5. Create Admin User
 
+``` bash
+python manage.py createsuperuser
+```
 
+### 6. Start Server
 
+``` bash
+python manage.py runserver
+```
 
+------------------------------------------------------------------------
 
-Technologies Used
+## Usage
 
-Python 3.14
+-   Visit `/` for homepage.\
+-   Visit `/dashboard/` after login.\
+-   Admins register users at `/admin-register/`.\
+-   Visitors apply at `/subscribe/`.\
+-   Categories available in navigation bar.
 
-Django 6.0
+------------------------------------------------------------------------
 
-CKEditor 4 (rich text editor)
+## Email Configuration
 
-Bootstrap 5 (responsive UI)
+Add to `settings.py`:
 
-SQLite (default, can switch to PostgreSQL,Mysql)
+``` python
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'your-email@gmail.com'
+EMAIL_HOST_PASSWORD = 'your-app-password'
+DEFAULT_FROM_EMAIL = 'Blog CMS <your-email@gmail.com>'
+```
 
+For production: use Gmail, SendGrid, or PythonAnywhere email.\
+(Note: free PythonAnywhere only emails PythonAnywhere addresses).
 
+------------------------------------------------------------------------
+
+## Technologies Used
+
+-   Python 3.14\
+-   Django 6.0\
+-   CKEditor 4\
+-   Bootstrap 5\
+-   SQLite (default; PostgreSQL supported)
+
+------------------------------------------------------------------------
+
+## License
+
+MIT License
+
+**Author:** George Eyo
