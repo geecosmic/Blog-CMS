@@ -196,4 +196,4 @@ For production: use Gmail, SendGrid, or PythonAnywhere email.\
 
 MIT License
 
-**Author:** George Eyo
+**Author:** George Eyo 
