@@ -1,5 +1,9 @@
 # Django Blog & Content Management System (CMS)
 
+================================================================================
+** To test the project,Request demo credentials (Username and Password) by email.
+================================================================================
+
 A full-featured **Django Blog & CMS** built for multi-user
 collaboration.\
 Supports **Admin, Editor, and Author roles**, with **rich text
